@@ -23,6 +23,8 @@ runs:
       :: [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -Uri https://github.com/opencv/opencv_contrib/archive/4.11.0.zip -OutFile c:\\opencv\\opencv_contrib-4.11.0.zip
       :: $ProgressPreference = 'SilentlyContinue'; Expand-Archive -Path c:\\opencv\\opencv_contrib-4.11.0.zip -DestinationPath c:\\opencv
       :: rm c:\\opencv\\opencv_contrib-4.11.0.zip
+      echo okay download
+      dir
       cd build
       set PATH=%PATH%;C:\\Program Files (x86)\\CMake\\bin;C:\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin
       set enable_shared=OFF
