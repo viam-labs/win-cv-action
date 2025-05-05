@@ -5,4 +5,4 @@ jobs:
   test:
     runs-on: windows-2019
     steps:
-    - uses: .
+    - uses: viam-labs/win-cv-action@main
