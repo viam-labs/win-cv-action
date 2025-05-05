@@ -24,13 +24,7 @@ runs:
       # :: $ProgressPreference = 'SilentlyContinue'; Expand-Archive -Path c:\\opencv\\opencv_contrib-4.11.0.zip -DestinationPath c:\\opencv
       # :: rm c:\\opencv\\opencv_contrib-4.11.0.zip
       echo okay download
-      ls
       cd c:/opencv/build
-      pwd
-      ls
-      cd c:\\opencv\\build
-      pwd
-      ls
       # export PATH="$PATH;C:\\Program Files (x86)\\CMake\\bin;C:\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin"
       # enable_shared=OFF
       # :: if [%1]==[static] (
@@ -41,9 +35,7 @@ runs:
       # :: )
       cmake C:\\opencv\\opencv-4.11.0 -G "MinGW Makefiles" -BC:\\opencv\\build -DENABLE_CXX11=ON -DBUILD_SHARED_LIBS=OFF -DWITH_IPP=OFF -DWITH_MSMF=OFF -DBUILD_EXAMPLES=OFF -DBUILD_TESTS=OFF -DBUILD_PERF_TESTS=ON -DBUILD_opencv_java=OFF -DBUILD_opencv_python=OFF -DBUILD_opencv_python2=OFF -DBUILD_opencv_python3=OFF -DBUILD_DOCS=OFF -DENABLE_PRECOMPILED_HEADERS=OFF -DBUILD_opencv_saliency=OFF -DBUILD_opencv_wechat_qrcode=ON -DCPU_DISPATCH= -DOPENCV_GENERATE_PKGCONFIG=ON -DWITH_OPENCL_D3D11_NV=OFF -DOPENCV_ALLOCATOR_STATS_COUNTER_TYPE=int64_t -Wno-dev
       # :: cmake C:\\opencv\\opencv-4.11.0 -G "MinGW Makefiles" -BC:\\opencv\\build -DENABLE_CXX11=ON -DOPENCV_EXTRA_MODULES_PATH=C:\\opencv\\opencv_contrib-4.11.0\\modules -DBUILD_SHARED_LIBS=OFF -DWITH_IPP=OFF -DWITH_MSMF=OFF -DBUILD_EXAMPLES=OFF -DBUILD_TESTS=OFF -DBUILD_PERF_TESTS=ON -DBUILD_opencv_java=OFF -DBUILD_opencv_python=OFF -DBUILD_opencv_python2=OFF -DBUILD_opencv_python3=OFF -DBUILD_DOCS=OFF -DENABLE_PRECOMPILED_HEADERS=OFF -DBUILD_opencv_saliency=OFF -DBUILD_opencv_wechat_qrcode=ON -DCPU_DISPATCH= -DOPENCV_GENERATE_PKGCONFIG=ON -DWITH_OPENCL_D3D11_NV=OFF -DOPENCV_ALLOCATOR_STATS_COUNTER_TYPE=int64_t -Wno-dev
-      pwd
-      ls
       mingw32-make -j${NUMBER_OF_PROCESSORS}
       mingw32-make install
-      rmdir -rf c:\\opencv\\opencv-4.11.0
+      rm -rf c:\\opencv\\opencv-4.11.0
       # :: rmdir c:\\opencv\\opencv_contrib-4.11.0 /s /q
