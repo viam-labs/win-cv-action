@@ -17,7 +17,7 @@ runs:
     run: |
       mkdir -p /opencv/build
       cd /opencv
-      curl --output opencv-4.11.0.zip https://github.com/opencv/opencv/archive/4.11.0.zip
+      curl --fail --location https://github.com/opencv/opencv/archive/4.11.0.zip --output opencv-4.11.0.zip
       7z x opencv-4.11.0.zip
       rm opencv-4.11.0.zip
       :: [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -Uri https://github.com/opencv/opencv_contrib/archive/4.11.0.zip -OutFile c:\\opencv\\opencv_contrib-4.11.0.zip
