@@ -13,10 +13,9 @@ runs:
   - run: 
     shell: bash
   - if: steps.cache.outputs.cache-hit != 'true'
-    shell: cmd
+    shell: bash
     run: |
-      mkdir c:/opencv
-      mkdir c:/opencv/build
+      mkdir -p c:/opencv/build
       cd c:/opencv
       curl --fail --location https://github.com/opencv/opencv/archive/4.11.0.zip --output opencv-4.11.0.zip
       7z x opencv-4.11.0.zip
@@ -25,8 +24,11 @@ runs:
       :: $ProgressPreference = 'SilentlyContinue'; Expand-Archive -Path c:\\opencv\\opencv_contrib-4.11.0.zip -DestinationPath c:\\opencv
       :: rm c:\\opencv\\opencv_contrib-4.11.0.zip
       echo okay download
-      dir
+      ls
       cd build
+  - if: steps.cache.outputs.cache-hit != 'true'
+    shell: cmd
+    run: |
       set PATH=%PATH%;C:\\Program Files (x86)\\CMake\\bin;C:\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin
       set enable_shared=OFF
       :: if [%1]==[static] (
