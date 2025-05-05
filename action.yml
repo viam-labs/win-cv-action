@@ -9,5 +9,11 @@ runs:
   steps:
   - run: curl https://raw.githubusercontent.com/hybridgroup/gocv/refs/tags/${{ inputs.version }}/win_build_opencv.cmd -o win_build_opencv.cmd
     shell: bash
+  - id: cache
+    uses: actions/cache@v4
+    with:
+      path: /opencv
+      key: ${{ runner.os }}-${{ inputs.version }}
   - run: win_build_opencv.cmd
     shell: cmd
+    if: steps.cache.outputs.cache-hit != 'true'
