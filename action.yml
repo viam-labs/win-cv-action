@@ -10,4 +10,4 @@ runs:
   - run: curl https://raw.githubusercontent.com/hybridgroup/gocv/refs/tags/${{ inputs.version }}/win_build_opencv.cmd -o win_build_opencv.cmd
     shell: bash
   - run: win_build_opencv.cmd
-    shell: bash
+    shell: cmd
