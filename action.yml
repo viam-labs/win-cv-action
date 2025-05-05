@@ -15,8 +15,9 @@ runs:
   - if: steps.cache.outputs.cache-hit != 'true'
     shell: cmd
     run: |
-      mkdir -p /opencv/build
-      cd /opencv
+      mkdir c:/opencv
+      mkdir c:/opencv/build
+      cd c:/opencv
       curl --fail --location https://github.com/opencv/opencv/archive/4.11.0.zip --output opencv-4.11.0.zip
       7z x opencv-4.11.0.zip
       rm opencv-4.11.0.zip
