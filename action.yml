@@ -1,0 +1,11 @@
+name: opencv install and build
+description: caches a cmake installation of opencv; intended for gocv static builds
+inputs:
+  version:
+    description: the version of gocv (*not* of opencv) to use
+    default: 'v0.41.0'
+runs:
+  using: composite
+  steps:
+  - run: curl https://raw.githubusercontent.com/hybridgroup/gocv/refs/tags/${{ inputs.version }}/win_build_opencv.cmd -o win_build_opencv.cmd
+  - run: win_build_opencv.cmd
