@@ -15,7 +15,7 @@ runs:
       key: ${{ runner.os }}-${{ inputs.version }}
   - if: steps.cache.outputs.cache-hit != 'true'
     run: |
-      curl --fail --location https://raw.githubusercontent.com/viam-labs/win-cv-action/refs/tags/${{ inputs.version }}/win_build_opencv.cmd --output win_build_opencv.cmd
+      curl --fail --location https://raw.githubusercontent.com/hybridgroup/gocv/refs/tags/${{ inputs.version }}/win_build_opencv.cmd --output win_build_opencv.cmd
       # we remove the final `chdir` because it's 1) wrong on systems that have go and 2) extra-wrong here
       head -n -1 win_build_opencv.cmd > build.cmd
     shell: bash
