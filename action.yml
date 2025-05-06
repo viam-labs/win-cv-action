@@ -1,5 +1,9 @@
 name: opencv install and build
 description: caches a cmake installation of opencv; intended for gocv static builds
+inputs:
+  version:
+    description: gocv version from which to pull build script
+    default: v0.41.0
 runs:
   using: composite
   steps:
@@ -8,10 +12,10 @@ runs:
     with:
       path: c:/opencv
       # second field in cache key is gocv version from which we copied the build steps
-      key: ${{ runner.os }}-v0.41.0
+      key: ${{ runner.os }}-${{ inputs.version }}
   - if: steps.cache.outputs.cache-hit != 'true'
     run: |
-      wget https://raw.githubusercontent.com/viam-labs/win-cv-action/refs/tags/v0.41.0/win_build_opencv.cmd
+      curl --fail --location https://raw.githubusercontent.com/viam-labs/win-cv-action/refs/tags/${{ inputs.version }}/win_build_opencv.cmd --output win_build_opencv.cmd
       # we remove the final `chdir` because it's 1) wrong on systems that have go and 2) extra-wrong here
       head -n -1 win_build_opencv.cmd > build.cmd
     shell: bash
