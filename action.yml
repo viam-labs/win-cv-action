@@ -17,4 +17,4 @@ runs:
     shell: bash
   - if: steps.cache.outputs.cache-hit != 'true'
     shell: cmd
-    run: build.cmd
+    run: build.cmd static
