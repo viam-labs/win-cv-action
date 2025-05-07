@@ -6,6 +6,8 @@ jobs:
     runs-on: windows-2022
     steps:
     - uses: viam-labs/win-cv-action@main
+      with:
+        static: static
     - uses: actions/checkout@v4
     - uses: actions/setup-go@v5
       with:
