@@ -15,12 +15,14 @@ runs:
       path: c:/opencv
       # second field in cache key is gocv version from which we copied the build steps
       # todo: add runner.version maybe or at least something which tracks different win versions
-      key: ${{ runner.os }}-${{ inputs.version }}-${{ inputs.static }}
+      key: ${{ runner.name }}-${{ inputs.version }}-${{ inputs.static }}
   - if: steps.cache.outputs.cache-hit != 'true'
     run: |
       curl --fail --location https://raw.githubusercontent.com/hybridgroup/gocv/refs/tags/${{ inputs.version }}/win_build_opencv.cmd --output win_build_opencv.cmd
       # we remove the final `chdir` because it's 1) wrong on systems that have go and 2) extra-wrong here
       head -n -1 win_build_opencv.cmd > build.cmd
+      # not sure what's up with quirc but builds fail with `-lquirc` errors, so quirc=off
+      sed -i '/^cmake/ s/$/ -DWITH_QUIRC=OFF/' build.cmd
     shell: bash
   - if: steps.cache.outputs.cache-hit != 'true'
     shell: cmd
