@@ -14,6 +14,7 @@ runs:
     with:
       path: c:/opencv
       # second field in cache key is gocv version from which we copied the build steps
+      # todo: add runner.version maybe or at least something which tracks different win versions
       key: ${{ runner.os }}-${{ inputs.version }}-${{ inputs.static }}
   - if: steps.cache.outputs.cache-hit != 'true'
     run: |
